@@ -1,9 +1,27 @@
-name: Deploy to EC2 via SSH
-    uses: appleboy/ssh-action@v0.1.7
-    with:
-      host: ${{ secrets.HOST }}               # Add your EC2 public IP as a GitHub secret
-      username: ${{ secrets.USER }}           # Add your EC2 username (typically 'ubuntu') as a GitHub secret
-      key: ${{ secrets.SSH_KEY }}             # Add your EC2 private SSH key as a GitHub secret
-      port: ${{ secrets.PORT }}               # SSH port, usually 22
-      script: |
-        cd projects/                    # Navigate to your project directory
+name: CI/CD for Node.js App
+
+# Trigger the workflow on push to the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code from GitHub
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Deploy via SSH to EC2
+    - name: Deploy to EC2 via SSH
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.HOST }}               # Add your EC2 public IP as a GitHub secret
+        username: ${{ secrets.USER }}           # Add your EC2 username (typically 'ubuntu') as a GitHub secret
+        key: ${{ secrets.SSH_KEY }}             # Add your EC2 private SSH key as a GitHub secret
+        port: ${{ secrets.PORT }}               # SSH port, usually 22
+        script: |
+          cd projects/
