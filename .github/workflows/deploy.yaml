@@ -1,0 +1,9 @@
+name: Deploy to EC2 via SSH
+    uses: appleboy/ssh-action@v0.1.7
+    with:
+      host: ${{ secrets.HOST }}               # Add your EC2 public IP as a GitHub secret
+      username: ${{ secrets.USER }}           # Add your EC2 username (typically 'ubuntu') as a GitHub secret
+      key: ${{ secrets.SSH_KEY }}             # Add your EC2 private SSH key as a GitHub secret
+      port: ${{ secrets.PORT }}               # SSH port, usually 22
+      script: |
+        cd projects/                    # Navigate to your project directory
