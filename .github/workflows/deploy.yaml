@@ -34,3 +34,4 @@ jobs:
           npm run build
           sudo rm -rf /var/www/html/*
           sudo mv build/* /var/www/html/
+          sudo pm2 restart focusflow-server   # Restart the PM2 process
