@@ -42,9 +42,7 @@ function Login() {
             <span>Password</span>
           </div>
           <div className="button-group">
-            <button className="enter" type="submit">
-              Login
-            </button>
+            <button className="enter" type="button" onClick={() => navigate('/Homepage')}> Login </button>
             <button
               className="signup"
               type="button"
