@@ -1,0 +1,177 @@
+
+
+* {
+    font-family: 'The Aesthetic Essential', Rovin;
+                                                
+}
+.html,body {
+  background-color: white;
+}
+.login {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 25px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* background-color: gra; */
+  }
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+    width: 340px;
+    flex-direction: column;
+    gap: 35px;
+    background: #cbcbcb;
+    box-shadow: 16px 16px 32px #c8c8c8,
+          -16px -16px 32px white;
+    border-radius: 8px;
+  }
+  
+  .inputBox {
+    margin-bottom: 50px;
+    position: relative;
+    width: 240px;
+    display: flex; /* Ensure alignment works well */
+    flex-direction: column; /* Stack the label and input */
+    align-items: center; /* Center-align content horizontally */
+    margin-left: -5px; /* Move the input box to the left */
+  }
+  
+  .inputBox input {
+    
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+    color: #000000;
+    font-size: 1em;
+    background: transparent;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    transition: 0.1s;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .inputBox span {
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    transform: translateY(-4px);
+    margin-left: 10px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 12px;
+    color: black;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 3px;
+    border-radius: 8px;
+  }
+  
+  .inputBox input:valid~span,
+  .inputBox input:focus~span {
+    transform: translateX(113px) translateY(-15px);
+    font-size: 0.8em;
+    padding: 5px 10px;
+    background: #000;
+    letter-spacing: 0.2em;
+    color: #fff;
+    border: 2px;
+  }
+  
+  .inputBox input:valid,
+  .inputBox input:focus {
+    border: 2px solid black;
+    border-radius: 8px;
+  }
+  
+  .enter {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: black;
+    /* margin-bottom: 1em; */
+  }
+  
+  .signup {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: black;
+    /* margin-bottom: 1em; */
+  }
+
+  .have-account {
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    padding-bottom: 10px;
+    letter-spacing: 2px;
+    color: black;
+    line-height: 9px;
+    /* margin-bottom: 1em; */
+   
+  }
+
+  .have-account:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 0, 0);
+    border: 2px solid black;
+
+  }
+
+  .signup:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 0, 0);
+    border: 2px solid black;
+  }
+  .enter:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(38, 255, 0);
+    border: 2px solid black;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+  }
+
+  .button-group-sign {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px ;
+  }
