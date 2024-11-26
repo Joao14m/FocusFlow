@@ -11,18 +11,34 @@ const Signup: React.FC = () => {
   const navigate = useNavigate();
 
   // Add type for event parameter
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Validate password and confirm password
+  
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-
-    // Proceed with signup logic (e.g., send data to the backend)
-    console.log("Signup Submitted:", { name, username, email, password });
+  
+    try {
+      const response = await fetch("http://54.225.24.146/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert("Signup successful! Please log in.");
+        navigate("/login");
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+    }
   };
+  
 
   return (
     <div className="container">
