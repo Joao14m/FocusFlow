@@ -2,49 +2,58 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup: React.FC = () => {
-  const [name, setName] = useState<string>(""); // Type for string state
-  const [username, setUsername] = useState<string>(""); 
+  const [name, setName] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false); // Modal state
+  const [modalMessage, setModalMessage] = useState<string>(""); // Modal message
 
   const navigate = useNavigate();
-
-  // Add type for event parameter
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      setModalMessage("Passwords do not match!");
+      setShowModal(true);
       return;
     }
-  
+
     try {
       const response = await fetch("http://54.225.24.146:5000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, username, email, password }),
-      });      
-  
+      });
+
       const data = await response.json();
-      console.log("Response from backend:", data);
-  
+
       if (response.ok) {
-        alert("Signup successful! Please log in.");
-        navigate("/login");
+        setModalMessage("Signup successful! Please log in.");
+        setShowModal(true);
+
+        // Redirect after a short delay
+        setTimeout(() => {
+          setShowModal(false);
+          navigate("/login");
+        }, 3000);
       } else {
-        alert(data.error);
+        setModalMessage(data.error || "Signup failed. Please try again.");
+        setShowModal(true);
       }
     } catch (error) {
       console.error("Signup Error:", error);
+      setModalMessage("An error occurred. Please try again.");
+      setShowModal(true);
     }
   };
-  
 
   return (
     <div className="container">
       <div className="card">
-        <a className="login">Sign up</a>
+        <h1 className="login">Sign up</h1>
         <form onSubmit={handleSubmit}>
           <div className="inputBox">
             <input
@@ -55,7 +64,6 @@ const Signup: React.FC = () => {
             />
             <span className="user">Full Name</span>
           </div>
-
           <div className="inputBox">
             <input
               type="text"
@@ -65,17 +73,15 @@ const Signup: React.FC = () => {
             />
             <span className="user">Username</span>
           </div>
-
           <div className="inputBox">
             <input
-              type="text"
+              type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <span className="user">Email</span>
           </div>
-
           <div className="inputBox">
             <input
               type="password"
@@ -85,7 +91,6 @@ const Signup: React.FC = () => {
             />
             <span>Password</span>
           </div>
-
           <div className="inputBox">
             <input
               type="password"
@@ -95,7 +100,6 @@ const Signup: React.FC = () => {
             />
             <span>Confirm Password</span>
           </div>
-
           <div className="button-group-sign">
             <button className="enter" type="submit">
               Sign up
@@ -105,11 +109,21 @@ const Signup: React.FC = () => {
               type="button"
               onClick={() => navigate("/login")}
             >
-              Have an account?
+              Have an account? Log in
             </button>
           </div>
         </form>
       </div>
+
+      {/* Modal Popup */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <p>{modalMessage}</p>
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
