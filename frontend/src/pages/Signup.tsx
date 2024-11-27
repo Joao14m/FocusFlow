@@ -1,28 +1,44 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/LogSign.css"; 
 
 const Signup: React.FC = () => {
-  const [name, setName] = useState<string>(""); // Define state type as string
+  const [name, setFirstName] = useState<string>(""); // Type for string state
   const [username, setUsername] = useState<string>(""); 
-  const [email, setEmail] = useState<string>(""); 
-  const [password, setPassword] = useState<string>(""); 
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  // Add type for event parameter
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Validate password and confirm password
+  
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-
-    // Proceed with signup logic (e.g., send data to the backend)
-    console.log("Signup Submitted:", { name, username, email, password });
+  
+    try {
+      const response = await fetch("http://54.225.24.146/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert("Signup successful! Please log in.");
+        navigate("/login");
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+    }
   };
+  
 
   return (
     <div className="container">
@@ -34,7 +50,7 @@ const Signup: React.FC = () => {
               type="text"
               required
               value={name}
-              onChange={(e) => setName(e.target.value)} // Updated to setName
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <span className="user">Full Name</span>
           </div>
@@ -84,7 +100,7 @@ const Signup: React.FC = () => {
               Sign up
             </button>
             <button
-              className="signup"
+              className="have-account"
               type="button"
               onClick={() => navigate("/login")}
             >

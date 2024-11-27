@@ -10,10 +10,30 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault(); // Prevent page reload
-    console.log("Login Submitted:", { username, password });
-    // TODO: Send username and password to the backend
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch("http://54.225.24.146/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        // Save token to localStorage
+        localStorage.setItem("token", data.token);
+        alert("Login successful!");
+        navigate("/Homepage"); // Navigate to Homepage only if login is successful
+      } else {
+        alert(data.error || "Invalid login credentials. Please try again.");
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      alert("An error occurred. Please try again later.");
+    }
   };
 
   return (
@@ -44,8 +64,7 @@ const Login: React.FC = () => {
           <div className="button-group">
             <button
               className="enter"
-              type="button"
-              onClick={() => navigate("/Homepage")}
+              type="submit" // Submit the form and validate the login
             >
               Login
             </button>
