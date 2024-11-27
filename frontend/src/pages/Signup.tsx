@@ -10,40 +10,40 @@ const Signup: React.FC = () => {
 
   const navigate = useNavigate();
 
-  // Add type for event parameter
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-  
+
     try {
       const response = await fetch("http://54.225.24.146:5000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, username, email, password }),
       });      
-  
+
       const data = await response.json();
       console.log("Response from backend:", data);
-  
+
       if (response.ok) {
         alert("Signup successful! Please log in.");
         navigate("/login");
       } else {
-        alert(data.error);
+        alert(data.error || "Signup failed. Please try again.");
       }
     } catch (error) {
       console.error("Signup Error:", error);
+      alert("An unexpected error occurred. Please try again later.");
     }
   };
-  
+
   return (
     <div className="container">
       <div className="card">
-        <a className="login">Sign up</a>
+        <h1 className="login">Sign up</h1>
         <form onSubmit={handleSubmit}>
           <div className="inputBox">
             <input
@@ -67,7 +67,7 @@ const Signup: React.FC = () => {
 
           <div className="inputBox">
             <input
-              type="text"
+              type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -104,7 +104,7 @@ const Signup: React.FC = () => {
               type="button"
               onClick={() => navigate("/login")}
             >
-              Have an account?
+              Have an account? Log in
             </button>
           </div>
         </form>
