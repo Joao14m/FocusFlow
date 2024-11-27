@@ -24,9 +24,10 @@ const Signup: React.FC = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, username, email, password }),
-      });
+      });      
   
       const data = await response.json();
+      console.log("Response from backend:", data);
   
       if (response.ok) {
         alert("Signup successful! Please log in.");

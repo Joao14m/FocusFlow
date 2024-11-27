@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  verified: { type: Boolean, default: false }, // Add verified field
 });
 
 const User = mongoose.model('User', userSchema);
@@ -39,22 +40,26 @@ app.get('/api/test', (req, res) => {
 
 // Signup Route
 app.post('/signup', async (req, res) => {
+  console.log("Received request:", req.body); // Log incoming data
+
   const { name, username, email, password } = req.body;
 
   try {
-    // Check if username or email exists
+    // Check for existing user
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
+      console.log("User already exists:", existingUser); // Debug existing user
       return res.status(400).json({ error: 'Username or email already exists' });
     }
 
-    // Save the new user
+    // Create new user
     const newUser = new User({ name, username, email, password });
-    await newUser.save();
+    const savedUser = await newUser.save();
+    console.log("User created:", savedUser); // Log the saved user
 
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
-    console.error('Error during signup:', error);
+    console.error("Error during signup:", error); // Log errors
     res.status(500).json({ error: 'Internal server error' });
   }
 });
