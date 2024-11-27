@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup: React.FC = () => {
-  const [name, setFirstName] = useState<string>(""); // Type for string state
+  const [name, setName] = useState<string>(""); // Type for string state
   const [username, setUsername] = useState<string>(""); 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -20,10 +20,10 @@ const Signup: React.FC = () => {
     }
   
     try {
-      const response = await fetch("http://54.225.24.146/signup", {
+      const response = await fetch("http://54.225.24.146:5000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ name, username, email, password }),
       });
   
       const data = await response.json();
@@ -50,7 +50,7 @@ const Signup: React.FC = () => {
               type="text"
               required
               value={name}
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
             <span className="user">Full Name</span>
           </div>
