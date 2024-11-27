@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup: React.FC = () => {
-  const [name, setName] = useState<string>(""); // Type for string state
-  const [username, setUsername] = useState<string>(""); 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [name, setName] = useState<string>(""); // Full Name
+  const [username, setUsername] = useState<string>(""); // Username
+  const [email, setEmail] = useState<string>(""); // Email
+  const [password, setPassword] = useState<string>(""); // Password
+  const [confirmPassword, setConfirmPassword] = useState<string>(""); // Confirm Password
 
   const navigate = useNavigate();
 
@@ -19,11 +19,12 @@ const Signup: React.FC = () => {
     }
 
     try {
+      // Make API call to backend
       const response = await fetch("http://54.225.24.146:5000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, username, email, password }),
-      });      
+      });
 
       const data = await response.json();
       console.log("Response from backend:", data);
@@ -45,6 +46,7 @@ const Signup: React.FC = () => {
       <div className="card">
         <h1 className="login">Sign up</h1>
         <form onSubmit={handleSubmit}>
+          {/* Full Name Input */}
           <div className="inputBox">
             <input
               type="text"
@@ -55,6 +57,7 @@ const Signup: React.FC = () => {
             <span className="user">Full Name</span>
           </div>
 
+          {/* Username Input */}
           <div className="inputBox">
             <input
               type="text"
@@ -65,6 +68,7 @@ const Signup: React.FC = () => {
             <span className="user">Username</span>
           </div>
 
+          {/* Email Input */}
           <div className="inputBox">
             <input
               type="email"
@@ -75,6 +79,7 @@ const Signup: React.FC = () => {
             <span className="user">Email</span>
           </div>
 
+          {/* Password Input */}
           <div className="inputBox">
             <input
               type="password"
@@ -85,6 +90,7 @@ const Signup: React.FC = () => {
             <span>Password</span>
           </div>
 
+          {/* Confirm Password Input */}
           <div className="inputBox">
             <input
               type="password"
@@ -95,6 +101,7 @@ const Signup: React.FC = () => {
             <span>Confirm Password</span>
           </div>
 
+          {/* Buttons */}
           <div className="button-group-sign">
             <button className="enter" type="submit">
               Sign up
