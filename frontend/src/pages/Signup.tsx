@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const app_name = 'focusflow.ink';
+
+function buildPath(route : string): string{
+  if(process.env.NODE_ENV !== 'development'){
+    return `https://${app_name}/${route}`;
+  } else {
+    return `http://localhost:5000/${route}`;
+  }
+}
+
 const Signup: React.FC = () => {
   const [name, setName] = useState<string>(""); // Full Name
   const [username, setUsername] = useState<string>(""); // Username
@@ -20,7 +30,7 @@ const Signup: React.FC = () => {
 
     try {
       // Make API call to backend
-      const response = await fetch("http://54.225.24.146:5000/signup", {
+      const response = await fetch(buildPath('api/register'), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, username, email, password }),
