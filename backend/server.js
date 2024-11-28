@@ -63,7 +63,32 @@ app.post('/api/register', async(req, res, next) => {
   }
 });
 
-  
+// Login
+app.post('/api/login', async(req, res, next) => {
+  let error = '';
+  const {username, password} = req.body;
+
+  try{
+    const db = client.db('TASKMANAGER_1');
+    const results = await db.collection('users').findOne(
+      {username: username, password: password}
+    );
+    
+    if(results){
+      const {_id: id, name: name, username: username, email: email} = results;
+      res.status(200).json({id, name, email, error: ''});
+    } else {
+      error = 'Invalid login or password';
+      res.status(401).json({error});
+    }
+  } catch (err) {
+    error = 'Error while accessing the database';
+    res.status(500).json({error});
+  }
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
