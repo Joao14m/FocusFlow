@@ -87,7 +87,36 @@ app.post('/api/login', async(req, res, next) => {
   }
 });
 
+app.post('/api/tasks', async (req, res, next) => {
+  const {user_id, category, title, description, status, daysOfTheWeek, time, priorityLevel} = req.body;
 
+  try{
+    const db = client.db('TASKMANAGER_1');
+
+    const user = await db.collection('users').findOne({_id: new ObjectId(user_id)});
+    if(!user){
+      return res.status(404).json({error: "User not found"});
+    }
+
+    // Task Creation
+    const task = {
+      user_id: user._id,
+      category, 
+      title, 
+      description,
+      status,
+      daysOfTheWeek,
+      time,
+      priorityLevel,
+    };
+
+    await db.collection('tasks').insertOne(task);
+    res.status(201).json({message: "Task created", task});
+  } catch(error){
+    console.error("Error creating task:", error);
+    res.status(500).json({error: "Internal server error"});
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
