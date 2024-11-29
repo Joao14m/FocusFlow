@@ -4,7 +4,7 @@ const ToDo: React.FC = () => {
   return (
     <div>
       <h1>To-Do List</h1>
-      <p>Welcome to the To-Do List page!</p>
+      <p>Daily Tasks</p>
     </div>
   );
 };
