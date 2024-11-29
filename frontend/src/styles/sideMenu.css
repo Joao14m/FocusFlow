@@ -40,13 +40,13 @@
 }
 
 #this-week {
-    background-color: #4caf50; /* Green */
+    background-color: black; /* Green */
 }
 
 #this-month {
-    background-color: #ff9800; /* Orange */
+    background-color: black; /* Orange */
 }
 
 #todo-list {
-    background-color: #2196f3; /* Blue */
+    background-color: black; /* Blue */
 }

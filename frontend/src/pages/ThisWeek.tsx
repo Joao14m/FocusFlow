@@ -15,16 +15,7 @@ const ThisWeek: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-      {/* Sidebar */}
-      <div className="containerSide">
-        <Link to="/this-week" className="boxSide" id="this-week">This Week</Link>
-        <Link to="/this-month" className="boxSide" id="this-month">This Month</Link>
-        <Link to="/todo-list" className="boxSide" id="todo-list">To-Do List</Link>
-        <Link to="/add-task" className="boxSide" id="add-task">New Task</Link>
-        <Link to="/login" className="boxSide" id="add-task">Logout</Link>
-      </div>
-
+    <div>
       {/* Weekly Calendar */}
       <div style={{ flex: 1, padding: '20px', marginLeft: '150px' }}>
       {/* Implement current Week Time */}
