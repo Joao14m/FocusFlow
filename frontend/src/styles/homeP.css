@@ -19,7 +19,7 @@ body {
     width: 200px;
     height: 150px;
     border-radius: 10px;
-    background-color: #0078d4;
+    background-color: black;
     color: white;
     display: flex;
     justify-content: center;
@@ -38,14 +38,32 @@ body {
   }
   
   #this-week {
-    background-color: #4caf50; /* Green */
+    background-color:   black; /* Green */
+    height: 50px;
   }
   
   #this-month {
-    background-color: #ff9800; /* Orange */
+    background-color:   black; /* Green */
+    height: 50px;
   }
   
   #todo-list {
-    background-color: #2196f3; /* Blue */
+    background-color:   black; /* Green */
+    height: 50px;
   }
   
+  #add-task{
+    height: 50px;
+
+  }
+  #log-out {
+    height: 50px;
+  }
+
+  
+  .sideBar {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-height: 100%;
+    margin-left: 25%;
+  }
