@@ -20,6 +20,8 @@ const ThisMonth: React.FC = () => {
       <Link to="/this-month" className="boxSide" id="this-month">This Month</Link>
       <Link to="/todo-list" className="boxSide" id="todo-list">To-Do List</Link>
       <Link to="/add-task" className="boxSide" id="add-task">New Task</Link>
+      <Link to="/login" className="boxSide" id="add-task">Logout</Link>
+
     </div>
   );
 };

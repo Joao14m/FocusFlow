@@ -3,6 +3,8 @@
     grid-template-rows: auto 1fr; /* Header row on top, flexible boxes below */
     border: 1px solid #000;
     background-color: #000;
+    height: 400px; /* Set a longer height for the entire calendar */
+
 }
 
 .header {
