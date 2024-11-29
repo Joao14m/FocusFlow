@@ -63,7 +63,62 @@ app.post('/api/register', async(req, res, next) => {
   }
 });
 
-  
+// Login
+app.post('/api/login', async(req, res, next) => {
+  let error = '';
+  const {username, password} = req.body;
+
+  try{
+    const db = client.db('TASKMANAGER_1');
+    const results = await db.collection('users').findOne(
+      {username: username, password: password}
+    );
+    
+    if(results){
+      const {_id: id, name: name, username: username, email: email} = results;
+      res.status(200).json({id, name, email, error: ''});
+    } else {
+      error = 'Invalid login or password';
+      res.status(401).json({error});
+    }
+  } catch (err) {
+    error = 'Error while accessing the database';
+    res.status(500).json({error});
+  }
+});
+
+// Task Creation
+app.post('/api/tasks', async (req, res, next) => {
+  const {user_id, category, title, description, status, daysOfTheWeek, time, priorityLevel} = req.body;
+
+  try{
+    const db = client.db('TASKMANAGER_1');
+
+    const user = await db.collection('users').findOne({_id: new ObjectId(user_id)});
+    if(!user){
+      return res.status(404).json({error: "User not found"});
+    }
+
+    // Task Creation
+    const task = {
+      user_id: user._id,
+      category, 
+      title, 
+      description,
+      status,
+      daysOfTheWeek,
+      time,
+      priorityLevel,
+    };
+
+    await db.collection('tasks').insertOne(task);
+    res.status(201).json({message: "Task created", task});
+  } catch(error){
+    console.error("Error creating task:", error);
+    res.status(500).json({error: "Internal server error"});
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
