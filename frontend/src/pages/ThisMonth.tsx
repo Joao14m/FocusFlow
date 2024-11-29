@@ -51,7 +51,7 @@ const ThisMonth: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
       {/* Sidebar */}
-      <div className="containerSide">
+      {/* <div className="containerSide">
         <Link to="/this-week" className="boxSide" id="this-week">
           This Week
         </Link>
@@ -67,7 +67,7 @@ const ThisMonth: React.FC = () => {
         <Link to="/login" className="boxSide" id="logout">
           Logout
         </Link>
-      </div>
+      </div> */}
 
       {/* Calendar */}
       <div style={{ flex: 1, padding: '20px', marginLeft: '150px', width:'800px' }}>
