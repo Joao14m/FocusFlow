@@ -1,27 +1,113 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/sideMenu.css';
-
-
+import '../styles/monthlyCalendar.css';
 
 const ThisMonth: React.FC = () => {
-    useEffect(() => {
-        // Add a class to the body tag for this page
-        document.body.className = 'sideMenuBody';
-    
-        // Cleanup to remove class when leaving the page
-        return () => {
-          document.body.className = '';
-        };
-      }, []);
-  return (
-    <div className="containerSide">
-      <Link to="/this-week" className="boxSide" id="this-week">This Week</Link>
-      <Link to="/this-month" className="boxSide" id="this-month">This Month</Link>
-      <Link to="/todo-list" className="boxSide" id="todo-list">To-Do List</Link>
-      <Link to="/add-task" className="boxSide" id="add-task">New Task</Link>
-      <Link to="/login" className="boxSide" id="add-task">Logout</Link>
+  const [currentDate, setCurrentDate] = useState<Date>(new Date()); // Current date
+  const [daysInMonth, setDaysInMonth] = useState<number[]>([]);
+  const [startDay, setStartDay] = useState<number>(0); // Index of the first day (0 = Sunday, 1 = Monday, etc.)
+  const [monthName, setMonthName] = useState<string>('');
+  const [year, setYear] = useState<number>(currentDate.getFullYear());
 
+  useEffect(() => {
+    updateCalendar(currentDate);
+  }, [currentDate]);
+
+  const updateCalendar = (date: Date) => {
+    const month = date.getMonth(); // 0-based index for months (0 = January)
+    const year = date.getFullYear();
+
+    // Get the first day of the selected month
+    const firstDay = new Date(year, month, 1).getDay(); // Day of the week (0 = Sunday)
+
+    // Get the number of days in the selected month
+    const days = new Date(year, month + 1, 0).getDate(); // Last day of the month
+
+    setMonthName(date.toLocaleString('default', { month: 'long' })); // Full month name
+    setYear(year);
+    setStartDay(firstDay);
+    setDaysInMonth(Array.from({ length: days }, (_, i) => i + 1)); // Days array
+  };
+
+  const handlePreviousMonth = () => {
+    const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+    setCurrentDate(newDate);
+  };
+
+  const handleNextMonth = () => {
+    const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+    setCurrentDate(newDate);
+  };
+
+  useEffect(() => {
+    document.body.className = 'sideMenuBody';
+
+    return () => {
+      document.body.className = '';
+    };
+  }, []);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+      {/* Sidebar */}
+      <div className="containerSide">
+        <Link to="/this-week" className="boxSide" id="this-week">
+          This Week
+        </Link>
+        <Link to="/this-month" className="boxSide active" id="this-month">
+          This Month
+        </Link>
+        <Link to="/todo-list" className="boxSide" id="todo-list">
+          To-Do List
+        </Link>
+        <Link to="/add-task" className="boxSide" id="add-task">
+          New Task
+        </Link>
+        <Link to="/login" className="boxSide" id="logout">
+          Logout
+        </Link>
+      </div>
+
+      {/* Calendar */}
+      <div style={{ flex: 1, padding: '20px', marginLeft: '150px', width:'800px' }}>
+
+      <div className="calendar">
+        <div className="calendarHeaderContainer">
+          <button className="arrowButton" onClick={handlePreviousMonth}>
+            &lt;
+          </button>
+          <h2>
+            {monthName} {year}
+          </h2>
+          <button className="arrowButton" onClick={handleNextMonth}>
+            &gt;
+          </button>
+        </div>
+        <div className="calendarHeader">
+          <div className="dayName">Sun</div>
+          <div className="dayName">Mon</div>
+          <div className="dayName">Tue</div>
+          <div className="dayName">Wed</div>
+          <div className="dayName">Thu</div>
+          <div className="dayName">Fri</div>
+          <div className="dayName">Sat</div>
+        </div>
+        <div className="calendarGrid">
+          {/* Empty cells for days before the first day of the month */}
+          {Array.from({ length: startDay }, (_, i) => (
+            <div key={`empty-${i}`} className="calendarCell empty"></div>
+          ))}
+
+          {/* Days of the current month */}
+          {daysInMonth.map((day) => (
+            <div key={day} className="calendarCell">
+              {day}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
     </div>
   );
 };
