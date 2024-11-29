@@ -1,0 +1,52 @@
+.sideMenuBody {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Align content to the start */
+    align-items: flex-start; /* Align content at the top */
+    height: 100vh;
+}
+
+
+.containerSide {
+    display: flex;
+    flex-direction: column; /* Arrange boxes vertically */
+    gap: 20px; /* Spacing between the boxes */
+    margin: 20px; /* Add some spacing from the edge of the screen */
+}
+
+.boxSide {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: #0078d4;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boxSide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+#this-week {
+    background-color: #4caf50; /* Green */
+}
+
+#this-month {
+    background-color: #ff9800; /* Orange */
+}
+
+#todo-list {
+    background-color: #2196f3; /* Blue */
+}

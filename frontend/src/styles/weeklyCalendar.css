@@ -1,0 +1,65 @@
+.weeklyCalendar {
+    display: grid;
+    grid-template-rows: auto 1fr; /* Header row on top, flexible boxes below */
+    border: 1px solid #000;
+    background-color: #000;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Seven equal columns for headers */
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #000; /* Separator between headers and boxes */
+}
+
+.dayHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    border: 1px solid #000; /* Adds borders around header cells */
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Seven equal columns for boxes */
+    gap: 1px; /* Adds spacing between day boxes */
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.day:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+}
+
+.day:active {
+    background-color: #ddd;
+}
+
+/* Highlight the current day */
+.currentDay {
+    background-color: #ffeb3b;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #f57c00;
+}
+
