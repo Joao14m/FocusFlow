@@ -117,11 +117,11 @@ const Signup: React.FC = () => {
               Sign up
             </button>
             <button
-              className="have-account"
+              className="signup-enter"
               type="button"
               onClick={() => navigate("/login")}
             >
-              Have an account? Log in
+              Have an account?
             </button>
           </div>
         </form>
