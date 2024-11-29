@@ -109,7 +109,7 @@ const Homepage: React.FC = () => {
       <div className="content">
         {/* Render child routes */}
 
-        {isModalOpen && (
+      {isModalOpen && (
             <div className="modal">
             <div className="modal-content">
               <h2>Add Task</h2>
