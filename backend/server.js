@@ -108,7 +108,7 @@ app.post('/api/tasks', async (req, res, next) => {
       status,
       daysOfTheWeek,
       time,
-      priorityLevel,
+      priorityLevel, //must be named the same thing in the frontend too2
     };
 
     await db.collection('tasks').insertOne(task);
