@@ -33,11 +33,10 @@ const Homepage: React.FC = () => {
     const formattedDateTime = now.toISOString().slice(0, 16); // Format as YYYY-MM-DDTHH:MM
 
     setTaskTime(formattedDateTime); // Initialize with today's date and time
-    setIsModalOpen(true);    
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-
     setIsModalOpen(false);
     // setTaskCategory("");
     setTaskTitle("");
@@ -157,7 +156,8 @@ const Homepage: React.FC = () => {
 
             <li className="menu-item">
               <button
-                className="menu-link" id="add-task-button"
+                className="menu-link"
+                id="add-task-button"
                 onClick={handleAddTask}
               >
                 <img
@@ -207,6 +207,17 @@ const Homepage: React.FC = () => {
                 </label>
               </div>
               <div className="inputSpace">
+
+              <label>
+                Date:
+                <input
+                  type="datetime-local" // Allows users to pick a date and time
+                  value={taskTime}
+                  onChange={(e) => setTaskTime(e.target.value)}
+                  />
+              </label>
+                  </div>
+              <div className="inputSpace">
                 <div className="prioStatusGroup">
                   <label>
                     Priority:
@@ -219,37 +230,24 @@ const Homepage: React.FC = () => {
                       <option value="Low">Low</option>
                     </select>
                   </label>
-              </div>
                 </div>
+              </div>
               <div className="inputSpace">
                 <div className="prioStatusGroup">
-                  
-                <label>
-                  Status:
-                  <select
-                    value={taskStatus}
-                    onChange={(e) => setTaskStatus(e.target.value)}
+                  <label>
+                    Status:
+                    <select
+                      value={taskStatus}
+                      onChange={(e) => setTaskStatus(e.target.value)}
                     >
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                  </select>
-                </label>
-                    </div>
+                      <option value="Pending">Pending</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Completed">Completed</option>
+                    </select>
+                  </label>
+                </div>
               </div>
-              <div className="inputSpace">
-                <div className="prioStatusGroup">
-                  
-                <label>
-                  Date:
-                  <input
-                    type="datetime-local" // Allows users to pick a date and time
-                    value={taskTime}
-                    onChange={(e) => setTaskTime(e.target.value)}
-                  />
-                </label>
-                    </div>
-              </div>
+
               <div className="modal-buttons">
                 <button id="Submit" onClick={handleSubmit}>
                   Submit
@@ -268,4 +266,3 @@ const Homepage: React.FC = () => {
   );
 };
 export default Homepage;
-
