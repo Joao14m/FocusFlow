@@ -1,0 +1,13 @@
+.taskIcons {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+  }
+  
+  .taskStar {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
