@@ -24,9 +24,9 @@ const Homepage: React.FC = () => {
   // const [taskDates, setTaskDates] = useState<string>("");
   const [taskTitle, setTaskTitle] = useState<string>("");
   const [taskDescription, setTaskDescription] = useState<string>("");
-  const [taskStatus, setTaskStatus] = useState<string>("");
+  const [taskStatus, setTaskStatus] = useState<string>("Pending"); //incase the user doesnt select a status
   const [taskTime, setTaskTime] = useState<string>("");
-  const [taskPriority, setTaskPriority] = useState<string>("");
+  const [taskPriority, setTaskPriority] = useState<string>("High"); //incase the user doesnt select a  prio
 
   const handleAddTask = () => {
     setIsModalOpen(true);
@@ -37,7 +37,7 @@ const Homepage: React.FC = () => {
     // setTaskCategory("");
     setTaskTitle("");
     setTaskDescription("");
-    setTaskStatus("Pending");
+    setTaskStatus("");
     // setTaskDates("");
     setTaskTime("");
     setTaskPriority("");

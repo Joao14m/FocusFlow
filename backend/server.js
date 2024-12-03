@@ -171,6 +171,19 @@ app.put('/api/tasks/:id', async (req, res) => {
   }
 });
 
+
+// Fetch all tasks
+app.get('/api/tasks', async (req, res) => {
+  try {
+    const db = client.db('TASKMANAGER_1');
+    const tasks = await db.collection('tasks').find().toArray();
+    res.status(200).json({ tasks });
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // Delete Task
 app.delete('/api/tasks/:id', async (req, res) => {
   const taskId = req.params.id; // Get task ID from the URL
@@ -186,7 +199,7 @@ app.delete('/api/tasks/:id', async (req, res) => {
       return res.status(400).json({ error: "Invalid task ID format" });
     }
 
-    // Delete the task
+    // Delete the task`
     const result = await db.collection('tasks').deleteOne({ _id: objectId });
 
     if (result.deletedCount === 0) {

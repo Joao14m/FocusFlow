@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage';
 import ThisWeek from './pages/ThisWeek';
 import ThisMonth from './pages/ThisMonth';
 import ToDo from './pages/ToDo';
+import './styles/tableDo.css';
 import './styles/LogSign.css';
 
 const App: React.FC = () => {
