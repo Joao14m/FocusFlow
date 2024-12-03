@@ -51,26 +51,9 @@ const ThisMonth: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
       {/* Sidebar */}
-      {/* <div className="containerSide">
-        <Link to="/this-week" className="boxSide" id="this-week">
-          This Week
-        </Link>
-        <Link to="/this-month" className="boxSide active" id="this-month">
-          This Month
-        </Link>
-        <Link to="/todo-list" className="boxSide" id="todo-list">
-          To-Do List
-        </Link>
-        <Link to="/add-task" className="boxSide" id="add-task">
-          New Task
-        </Link>
-        <Link to="/login" className="boxSide" id="logout">
-          Logout
-        </Link>
-      </div> */}
-
+  
       {/* Calendar */}
-      <div style={{ flex: 1, padding: '20px', marginLeft: '250px', width:'800px',  }}>
+      <div style={{ color: 'black' , flex: 1, padding: '20px', marginLeft: '400px', width:'800px' }}>
 
       <div className="calendar">
         <div className="calendarHeaderContainer">
