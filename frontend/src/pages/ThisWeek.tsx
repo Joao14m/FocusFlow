@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../styles/sideMenu.css';
 import '../styles/weeklyCalendar.css';
 
@@ -78,12 +78,7 @@ const ThisWeek: React.FC = () => {
             ))}
           </div>
           <div className="boxes">
-            {currentWeek.map((date, index) => (
-              <div key={index} className="day">
-                ..
-                {/* Tasks for {date.toLocaleDateString('default', { month: 'short', day: 'numeric' })} */}
-              </div>
-            ))}
+           
           </div>
         </div>
       </div>
@@ -92,3 +87,9 @@ const ThisWeek: React.FC = () => {
 };
 
 export default ThisWeek;
+//  {/* {currentWeek.map((date, index) => (
+//               <div key={index} className="day">
+//                 ..
+//                 {/* Tasks for {date.toLocaleDateString('default', { month: 'short', day: 'numeric' })} */}
+//                 </div>
+//               ))} */}
