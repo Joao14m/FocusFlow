@@ -17,23 +17,33 @@ const ToDo: React.FC = () => {
 
   useEffect(() => {
     const fetchTasks = async () => {
+      const userId = localStorage.getItem('user_id'); // Retrieve user_id from localStorage
+  
+      // Return early if user_id is not present
+      if (!userId) {
+        console.warn('Invalid user: No user_id found');
+        setError('Invalid user');
+        return;
+      }
+  
       try {
-        const response = await fetch('http://localhost:5000/api/tasks');
+        // Fetch tasks for the specific user
+        const response = await fetch(`http://localhost:5000/api/tasks?user_id=${userId}`);
         const data = await response.json();
-
+  
         if (response.ok) {
-          setTasks(data.tasks || []);
+          setTasks(data.tasks || []); // Update tasks state
         } else {
-          setError(data.error || 'Failed to fetch tasks');
+          setError(data.error || 'Failed to fetch tasks'); // Handle API error
         }
       } catch (err) {
         console.error('Error fetching tasks:', err);
-        setError('An unexpected error occurred');
+        setError('An unexpected error occurred'); // Handle network error
       }
     };
-
-    fetchTasks();
-  }, []);
+  
+    fetchTasks(); // Call the function inside useEffect
+  }, []); 
 
   const handleDelete = async (taskId: string) => {
     try {
