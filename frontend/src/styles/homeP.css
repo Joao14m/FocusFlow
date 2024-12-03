@@ -14,7 +14,13 @@ body {
     display: flex;
     gap: 20px; /* Spacing between the boxes */
   }
-  
+
+
+  .homepage {
+    justify-items: center;
+    align-items: center ;
+  }
+
   .homepage .sideBar{
     background: black;
     position: fixed;
@@ -33,6 +39,7 @@ body {
   margin: 10px;
   font-size: 15px;
 }
+
 
   .box {
     width: 200px;
