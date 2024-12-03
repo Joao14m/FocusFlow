@@ -29,10 +29,15 @@ const Homepage: React.FC = () => {
   const [taskPriority, setTaskPriority] = useState<string>("High"); //incase the user doesnt select a  prio
 
   const handleAddTask = () => {
-    setIsModalOpen(true);
+    const now = new Date();
+    const formattedDateTime = now.toISOString().slice(0, 16); // Format as YYYY-MM-DDTHH:MM
+
+    setTaskTime(formattedDateTime); // Initialize with today's date and time
+    setIsModalOpen(true);    
   };
 
   const handleCloseModal = () => {
+
     setIsModalOpen(false);
     // setTaskCategory("");
     setTaskTitle("");
@@ -40,7 +45,7 @@ const Homepage: React.FC = () => {
     setTaskStatus("");
     // setTaskDates("");
     setTaskTime("");
-    setTaskPriority("");
+    setTaskPriority("High");
   };
 
   const handleSubmit = async () => {
@@ -232,6 +237,19 @@ const Homepage: React.FC = () => {
                 </label>
                     </div>
               </div>
+              <div className="inputSpace">
+                <div className="prioStatusGroup">
+                  
+                <label>
+                  Date:
+                  <input
+                    type="datetime-local" // Allows users to pick a date and time
+                    value={taskTime}
+                    onChange={(e) => setTaskTime(e.target.value)}
+                  />
+                </label>
+                    </div>
+              </div>
               <div className="modal-buttons">
                 <button id="Submit" onClick={handleSubmit}>
                   Submit
@@ -251,102 +269,3 @@ const Homepage: React.FC = () => {
 };
 export default Homepage;
 
-// {
-//   <div className="sideBar">
-//   <div className="welcomeUser">
-//     Welcome {curName ? curName : "Guest"}!{" "}
-//     {/* shoutout joe and jeaan carlos :goat:/*/}
-//   </div>
-//   <Link to="/homepage/this-week" className="box" id="this-week">
-//     This Week
-//   </Link>
-//   <Link to="/homepage/this-month" className="box" id="this-month">
-//     This Month
-//   </Link>
-//   <Link to="/homepage/todo-list" className="box" id="todo-list">
-//     To-Do List
-//   </Link>
-//   <Link to="/homepage/todo-list" className="box" id="add-task">
-//     ADD TASK
-//   </Link>
-//   <Link to="/homepage/logout" className="box" id="log-out">
-//     Logout
-//   </Link>
-// </div>
-// }
-
-{
-  /* {isModalOpen && (
-  <div className="modal">
-  <div className="modal-content">
-  <h2>Add Task</h2>
-  <label>
-  Category:
-  <input
-  type="text"
-  value={taskCategory}
-  onChange={(e) => setTaskCategory(e.target.value)}
-  />
-  </label>
-  <label>
-                Title:
-                <input
-                  type="text"
-
-                  value={taskTitle}
-                  onChange={(e) => setTaskTitle(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                Description:
-                <textarea
-                  value={taskDescription}
-                  onChange={(e) => setTaskDescription(e.target.value)}
-                />
-              </label>
-              <label>
-                Priority:
-                <select
-                  value={taskPriority}
-                  onChange={(e) => setTaskPriority(e.target.value)}
-                >
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
-                </select>
-              </label>
-              <label>
-                Dates:
-                <input
-                  type="date"
-                  value={taskDates}
-                  onChange={(e) => setTaskDates(e.target.value)}
-                />
-              </label>
-              <label>
-                Time:
-                <input
-                  type="time"
-                  value={taskTime}
-                  onChange={(e) => setTaskTime(e.target.value)}
-                />
-              </label>
-              <label>
-                Status:
-                <select
-                  value={taskStatus}
-                  onChange={(e) => setTaskStatus(e.target.value)}
-                >
-                  <option value="Pending">Pending</option>
-                  <option value="In Progress">In Progress</option>
-                  <option value="Completed">Completed</option>
-                </select>
-              </label>
-              <div className="modal-buttons">
-                <button onClick={handleSubmit}>Submit</button>
-                <button onClick={handleCloseModal}>Cancel</button>
-              </div>
-            </div>
-          </div> */
-}
