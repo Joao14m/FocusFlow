@@ -94,8 +94,14 @@ const Homepage: React.FC = () => {
       {/* top menu */}
       {location.pathname === "/Homepage" && !isModalOpen && (
         <>
+           {localStorage.getItem("user_id") ? (
+        <>
           <p>Welcome Home.</p>
           <h4>{curName ? curName : "Guest"}</h4>
+      </>
+    ) : (
+      <h4>Invalid User</h4>
+    )}
         </>
         // this makes is so that the welcome home user only shows in the home
       )}
@@ -173,10 +179,27 @@ const Homepage: React.FC = () => {
         </div>
 
         <div className="user-container">
-          <a className="logout-btn" href="/Homepage/login">
-            <img className="logout-img" src="/img/log-out.svg" alt="logout" />
-          </a>
-        </div>
+  <button
+    className="logout-btn"
+    onClick={() => {
+      // Clear cookies
+      document.cookie.split(";").forEach((cookie) => {
+        const [name] = cookie.split("=");
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      });
+
+      // Clear localStorage/sessionStorage if needed
+      localStorage.clear();
+      sessionStorage.clear();
+
+      // Redirect to login page
+      window.location.href = "/Homepage/login";
+    }}
+  >
+    <img className="logout-img" src="/img/log-out.svg" alt="logout" />
+  </button>
+</div>
+
       </nav>
       <div className="content">
         {/* Render child routes */}
