@@ -9,6 +9,15 @@ app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.json());
 
+const corsOptions = {
+  origin: "https://focusflow.ink" ,
+  methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+
 // MongoDB Connection
 const PORT = 5000; // Hardcoded port
 const url = 'mongodb+srv://joaomar:mvJMv@cluster0.3zicq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // Hardcoded MongoDB URI
@@ -17,7 +26,7 @@ const client = new MongoClient(url);
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
-      'Access-Control-Allow-Headers',
+      'Access-Control-Allow-Headers', 
       'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   );
   res.setHeader(

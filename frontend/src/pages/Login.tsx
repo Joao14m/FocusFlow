@@ -56,7 +56,7 @@ const Login: React.FC = () => {
   return (
     <div className="container">
       <div className="card">
-        <a className="login">Log in</a>
+        <a className="login">Log in | TESTING CORS</a>
         <form onSubmit={handleSubmit}>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="inputBox">
