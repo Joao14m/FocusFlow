@@ -70,7 +70,7 @@ const ThisMonth: React.FC = () => {
       </div> */}
 
       {/* Calendar */}
-      <div style={{ flex: 1, padding: '20px', marginLeft: '150px', width:'800px' }}>
+      <div style={{ flex: 1, padding: '20px', marginLeft: '250px', width:'800px',  }}>
 
       <div className="calendar">
         <div className="calendarHeaderContainer">
