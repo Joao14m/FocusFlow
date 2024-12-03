@@ -194,6 +194,8 @@ const Homepage: React.FC = () => {
 
       // Redirect to login page
       window.location.href = "/Homepage/login";
+ 
+
     }}
   >
     <img className="logout-img" src="/img/log-out.svg" alt="logout" />

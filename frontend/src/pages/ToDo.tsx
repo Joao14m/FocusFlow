@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 interface Task {
   _id: string;
+  user_id: string;
   title: string;
   description: string;
   category: string;
@@ -31,8 +32,16 @@ const ToDo: React.FC = () => {
         const response = await fetch(`http://localhost:5000/api/tasks?user_id=${userId}`);
         const data = await response.json();
   
+        
+
         if (response.ok) {
-          setTasks(data.tasks || []); // Update tasks state
+          const userTasks = data.tasks.filter((task: Task) => task.user_id === userId);
+
+          console.log(userId);
+          console.log(userTasks);
+
+          console.log(data);
+          setTasks(userTasks); // Update state with filtered tasks
         } else {
           setError(data.error || 'Failed to fetch tasks'); // Handle API error
         }
