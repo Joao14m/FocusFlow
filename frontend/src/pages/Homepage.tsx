@@ -8,7 +8,7 @@ const Homepage: React.FC = () => {
         <div className="box" id="this-month">This Month</div>
         <div className="box" id="todo-list">To-Do List</div>
         <div className="box" id="add-task">Add Task</div>
-        <div className="box" id="add-task">Testing Task</div>
+        <div className="box" id="add-task">Testing Task 2</div>
     </div>
     );
 };
