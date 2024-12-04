@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/sideMenu.css";
 import "../styles/weeklyCalendar.css";
 import "../styles/thisWeekAnimation.css";
-import { title } from "process";
+// import { title } from "process";
 
 const app_name = "focusflow.ink";
 
@@ -100,11 +100,6 @@ const ThisWeek: React.FC = () => {
     }
   };
 
-  const getTasksForDate = (date: Date) => {
-    return tasks.filter(
-      (task) => new Date(task.time).toDateString() === date.toDateString()
-    );
-  };
 
   const getPriorityColor = (priority: string): string => {
     switch (priority.toLowerCase()) {
