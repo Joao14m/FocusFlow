@@ -42,7 +42,7 @@ const Login: React.FC = () => {
         localStorage.setItem('name', data.name);
         localStorage.setItem('email', data.email);
 
-        alert("Login successful!");
+        // alert("Login successful!");
         navigate("/Homepage"); // Navigate to Homepage only if login is successful
       } else {
         setErrorMessage(data.error || "Invalid login credentials. Please try again.");
@@ -56,7 +56,7 @@ const Login: React.FC = () => {
   return (
     <div className="container">
       <div className="card">
-        <a className="login">Log in | TESTING CORS</a>
+        <a className="login">Log in</a>
         <form onSubmit={handleSubmit}>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="inputBox">

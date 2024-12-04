@@ -38,18 +38,6 @@ li {
 /*navbar*/
 .navbar {
     z-index: 2;
-    /* margin: 0;
-    width: 80px;
-    display: flex;
-    height: 100vh; 
-    background-color: var(--green);
-    position: fixed;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: all .3s ease;
-    
-    transition: all 0.5s ease;
-    */
     background: rgba(0, 0, 0, 0.677);
     max-width: 100rem;
     top: 0;
@@ -116,7 +104,7 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 4.5rem;
     width: 100%;
     color: black;
 
@@ -128,7 +116,9 @@ li {
 }
 
 
-.navbar .menu-list .menu-item  .menu-link{    
+.navbar .menu-list .menu-item  .menu-link{
+    padding-top: 30px; 
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -172,7 +162,7 @@ li {
     align-items: center;
     justify-content: center;
     padding: 0.5rem 1rem;
-    margin-top: 350px;
+    margin-top: 90px;
 }
 
 .navbar .user-container .user-info {

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days of the Week with Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .day {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+        .day:hover {
+            background: #0056b3;
+        }
+        .tasks {
+            margin-top: 10px;
+        }
+        .tasks .task-card {
+            background: white;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .tasks .no-tasks {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Days of the Week</h1>
+    <div class="container">
+        <!-- Sunday -->
+        <div>
+            <div class="day">Sunday</div>
+            <div class="tasks">
+                <div class="task-card">Task 1: Relax</div>
+                <div class="task-card">Task 2: Prepare for the week</div>
+            </div>
+        </div>
+        <!-- Monday -->
+        <div>
+            <div class="day">Monday</div>
+            <div class="tasks">
+                <div class="no-tasks">No tasks yet</div>
+            </div>
+        </div>
+        <!-- Tuesday -->
+        <div>
+            <div class="day">Tuesday</div>
+            <div class="tasks">
+                <div class="no-tasks">No tasks yet</div>
+            </div>
+        </div>
+        <!-- Wednesday -->
+        <div>
+            <div class="day">Wednesday</div>
+            <div class="tasks">
+                <div class="no-tasks">No tasks yet</div>
+            </div>
+        </div>
+        <!-- Thursday -->
+        <div>
+            <div class="day">Thursday</div>
+            <div class="tasks">
+                <div class="no-tasks">No tasks yet</div>
+            </div>
+        </div>
+        <!-- Friday -->
+        <div>
+            <div class="day">Friday</div>
+            <div class="tasks">
+                <div class="no-tasks">No tasks yet</div>
+            </div>
+        </div>
+        <!-- Saturday -->
+        <div>
+            <div class="day">Saturday</div>
+            <div class="tasks">
+                <div class="no-tasks">No tasks yet</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

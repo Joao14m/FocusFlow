@@ -77,7 +77,7 @@ const Homepage: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Task added successfully!");
+        // alert("Task added successfully!");
         console.log("Task added:", data.task);
         handleCloseModal();
       } else {
@@ -116,7 +116,6 @@ const Homepage: React.FC = () => {
               <a className="menu-link" href="/Homepage">
                 <img
                   src="/img/dashboard.svg"
-                  title="Dashboard"
                   className="menu-icon"
                   alt="grid"
                 />
@@ -128,37 +127,35 @@ const Homepage: React.FC = () => {
               <a className="menu-link" href="/Homepage/this-week">
                 <img
                   src="/img/week.svg"
-                  title="Ajustes"
                   className="menu-icon"
                   alt="settings"
                 />
-                This Week
+                Week View
               </a>
             </li>
 
-            <li className="menu-item">
-              <a className="menu-link" href="/Homepage/this-month">
-                <img
-                  src="/img/calendar.svg"
-                  title="Ajustes"
-                  className="menu-icon"
-                  alt="settings"
-                />
-                This Month
-              </a>
-            </li>
 
             <li className="menu-item">
               <a className="menu-link" href="/Homepage/todo-list">
                 <img
                   src="/img/task.svg"
-                  title="Ajustes"
                   className="menu-icon"
                   alt="settings"
                 />
-                To-Do List
+              List view
               </a>
             </li>
+
+            {/* <li className="menu-item">
+              <a className="menu-link" href="/Homepage/search">
+                <img
+                  src="/img/task.svg"
+                  className="menu-icon"
+                  alt="settings"
+                />
+                Search
+              </a>
+            </li> */}
 
             <li className="menu-item">
               <button

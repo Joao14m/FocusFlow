@@ -3,14 +3,14 @@
     color: black; /* Set text color */
     padding: 20px; 
     width: 50%; /* Set a specific width */
-    max-width: 500px; /* Prevent it from being too wide */
+    /* max-width: 500px;  */
     position: relative; /* Allow positioning within the modal */
     z-index: 1001; /* Ensure it stays above the overlay */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 350px;
+    min-height: 650px;
     width: 340px;
     flex-direction: column;
     gap: 35px;
@@ -20,7 +20,8 @@
     border-radius: 8px;
   
   }
-  
+
+
   .modal {
     display: flex; /* Flexbox for centering */
     justify-content: center; /* Center horizontally */
