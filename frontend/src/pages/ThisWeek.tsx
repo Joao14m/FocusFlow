@@ -162,7 +162,7 @@ const ThisWeek: React.FC = () => {
     };
 
     try {
-      const response = await fetch(buildPath("api/tasks"), {
+      const response = await fetch(buildPath(`api/tasks?user_id=${userId}`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(task),

@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
+function buildPath(route: string): string {
+  const app_name = "focusflow.ink"; // Replace with your backend domain
+  if (process.env.NODE_ENV !== "development") {
+    return `https://${app_name}/${route}`;
+  } else {
+    return `http://localhost:5000/${route}`;
+  }
+}
+
+
 interface Task {
   _id: string;
   user_id: string;
@@ -28,7 +38,7 @@ const ToDo: React.FC = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:5000/api/tasks?user_id=${userId}`);
+        const response = await fetch(buildPath(`api/tasks?user_id=${userId}`));
         const data = await response.json();
 
         if (response.ok) {
@@ -48,7 +58,7 @@ const ToDo: React.FC = () => {
 
   const handleDelete = async (taskId: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+      const response = await fetch(buildPath(`api/tasks?user_id=${taskId}`), {
         method: 'DELETE',
       });
 
