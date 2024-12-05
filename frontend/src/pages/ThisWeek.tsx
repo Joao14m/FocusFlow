@@ -7,7 +7,7 @@ import "../styles/thisWeekAnimation.css";
 const app_name = "focusflow.ink";
 
 function buildPath(route: string): string {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV !== "development") {
     return `https://${app_name}/${route}`;
   } else {
     return `http://localhost:5000/${route}`;
@@ -163,7 +163,7 @@ const ThisWeek: React.FC = () => {
     };
 
     try {
-      const response = await fetch(buildPath(`api/tasks?user_id=${userId}`), {
+      const response = await fetch(buildPath("api/tasks"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(task),
