@@ -174,15 +174,24 @@ app.put('/api/tasks/:id', async (req, res) => {
 
 // Fetch all tasks
 app.get('/api/tasks', async (req, res) => {
+  console.log("Request to /api/tasks:", req.query);
+
+  const userId = req.query.user_id;
+  if (!userId) {
+    return res.status(400).json({ error: "user_id query parameter is required" });
+  }
+
   try {
     const db = client.db('TASKMANAGER_1');
-    const tasks = await db.collection('tasks').find().toArray();
+    const tasks = await db.collection('tasks').find({ user_id: userId }).toArray();
     res.status(200).json({ tasks });
   } catch (error) {
     console.error("Error fetching tasks:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
 
 // Delete Task
 app.delete('/api/tasks/:id', async (req, res) => {
