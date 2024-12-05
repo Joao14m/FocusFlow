@@ -5,7 +5,7 @@ const path = require('path');
 const { MongoClient, ObjectId } = require('mongodb');
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.json());
 
