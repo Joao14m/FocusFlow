@@ -5,12 +5,10 @@ import Signup from './pages/Signup';
 import Homepage from './pages/Homepage';
 import ThisWeek from './pages/ThisWeek';
 import ThisMonth from './pages/ThisMonth';
-import EssaSemana from './pages/essaSemana';
 import ToDo from './pages/ToDo';
 import './styles/thisWeekAnimation.css'
 import './styles/tableDo.css';
 import './styles/LogSign.css';
-import Search from './pages/Search';
 
 const App: React.FC = () => {
   return (
@@ -29,8 +27,6 @@ const App: React.FC = () => {
             <Route path="this-week" element={<ThisWeek />} />
             <Route path="this-month" element={<ThisMonth />} />
             <Route path="todo-list" element={<ToDo />} />
-            <Route path="search" element={<Search />} />
-            <Route path="essaSemana" element={<EssaSemana />} />
           </Route>
 
           {/* Redirect unknown routes to login */}

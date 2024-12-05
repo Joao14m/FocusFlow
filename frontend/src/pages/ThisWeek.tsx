@@ -28,7 +28,7 @@ interface Task {
 
 const ThisWeek: React.FC = () => {
   const [currentWeek, setCurrentWeek] = useState<Date[]>([]);
-  const [startDate, setStartDate] = useState<Date | null>(null);
+  // const [startDate, setStartDate] = useState<Date | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // View Tasks modal
   const [isModalOpen2, setIsModalOpen2] = useState<boolean>(false); // Add Task modal
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -72,7 +72,7 @@ const ThisWeek: React.FC = () => {
       return day;
     });
 
-    setStartDate(startOfWeek);
+    // setStartDate(startOfWeek);
     setCurrentWeek(weekDates);
   };
 
