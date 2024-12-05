@@ -82,7 +82,7 @@ const ThisWeek: React.FC = () => {
     if (!userId) return;
 
     try {
-      const response = await fetch(buildPath(`api/tasks?user_id=${userId}`));
+      const response = await fetch(`http://localhost:5000/api/tasks?user_id=${userId}`);
       const data = await response.json();
 
       if (response.ok) {
