@@ -9,7 +9,6 @@ function buildPath(route: string): string {
   }
 }
 
-
 interface Task {
   _id: string;
   user_id: string;
