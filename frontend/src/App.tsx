@@ -2,28 +2,39 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Dashboard from './dashboard';
-import './styles/LogSign.css';
-// import Tasks from './Tasks';
-// import './styles/checkTask.css';
 import Homepage from './pages/Homepage';
-import './styles/homeP.css';
-// import './styles/menuIcon.css';
-// import './styles/sideMenu.css';
-// import './styles/homePG.css';
+import ThisWeek from './pages/ThisWeek';
+import ThisMonth from './pages/ThisMonth';
+import EssaSemana from './pages/essaSemana';
+import ToDo from './pages/ToDo';
+import './styles/thisWeekAnimation.css'
+import './styles/tableDo.css';
+import './styles/LogSign.css';
+import Search from './pages/Search';
 
-// TypeScript types for the App component (optional but helpful for larger projects)
 const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
         <Routes>
+          {/* Redirect root path to login */}
           <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Homepage" element={<Homepage />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          {/* <Route path="/Tasks" element={<Tasks />} /> */}
+
+          {/* Login and Signup routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+
+          {/* Homepage layout for other pages */}
+          <Route path="/homepage" element={<Homepage />}>
+            <Route path="this-week" element={<ThisWeek />} />
+            <Route path="this-month" element={<ThisMonth />} />
+            <Route path="todo-list" element={<ToDo />} />
+            <Route path="search" element={<Search />} />
+            <Route path="essaSemana" element={<EssaSemana />} />
+          </Route>
+
+          {/* Redirect unknown routes to login */}
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
     </Router>

@@ -40,7 +40,7 @@ const Signup: React.FC = () => {
       console.log("Response from backend:", data);
 
       if (response.ok) {
-        alert("Signup successful! Please log in.");
+        // alert("Signup successful! Please log in.");
         navigate("/login");
       } else {
         alert(data.error || "Signup failed. Please try again.");
