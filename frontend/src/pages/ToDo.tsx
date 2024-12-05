@@ -55,9 +55,35 @@ const ToDo: React.FC = () => {
     fetchTasks(); // Call the function inside useEffect
   }, []);
 
+
+  // const handleDelete = async (taskId: string) => {
+  //   try {
+  //     const response = await fetch(buildPath(`api/tasks/${taskId}`), {
+  //       method: "DELETE",
+  //     });
+
+  //     if (response.ok) {
+  //       setTasks((prevTasks) =>
+  //         prevTasks.filter((task) => task._id !== taskId)
+  //       );
+  //       setTasksForDate((prevTasks) =>
+  //         prevTasks.filter((task) => task._id !== taskId)
+  //       ); // Update tasks for the modal
+  //     } else {
+  //       const data = await response.json();
+  //       console.error(data.error || "Failed to delete task");
+  //     }
+  //   } catch (err) {
+  //     console.error("Error deleting task:", err);
+  //   }
+  // };
+
+
+
+
   const handleDelete = async (taskId: string) => {
     try {
-      const response = await fetch(buildPath(`api/tasks?user_id=${taskId}`), {
+      const response = await fetch(buildPath(`api/tasks/${taskId}`), {
         method: 'DELETE',
       });
 

@@ -19,7 +19,7 @@ client.connect().then(() => {
 
 // Middleware
 app.use(cors({ // Enable CORS for the frontend domain
-  origin: "https://focusflow.ink",
+  origin:  ['https://www.focusflow.ink/', 'https://focusflow.ink/'], //allowed orinignis
   methods: "GET, POST, PUT, DELETE",
   credentials: true,
 }));
