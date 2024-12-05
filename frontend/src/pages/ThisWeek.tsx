@@ -232,7 +232,7 @@ const ThisWeek: React.FC = () => {
       if (response.ok) {
         // Update the local task list with the updated task
 
-        alert("Task updated successfully!");
+        // alert("Task updated successfully!");
 
         fetchTasks(); // Refresh tasks from the server (optional)
         setIsEditModalOpen(false); // Close the modal
